@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "23478154947",
+    "project_id": "baselogin-b9f65",
+    "storage_bucket": "baselogin-b9f65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23478154947:android:27d818c4f94103586e5476",
+        "android_client_info": {
+          "package_name": "com.example.login_moviles2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACGbqT6fGlRsoHl8MCFentjLoZ5Vx84UY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
