@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:login_moviles2/main.dart';
 import 'package:login_moviles2/screens/forgot_password_page.dart';
 import 'package:login_moviles2/utils/utils.dart';
 
@@ -106,23 +105,23 @@ class _LoginWidgetState extends State <LoginWidget> {
   );
 
   Future signIn() async {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => Center(child: CircularProgressIndicator()),
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (context) => Center(child: CircularProgressIndicator()),
+  );
+
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
     );
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
-    }
-    on FirebaseAuthException catch (e) {
-      print(e);
-
-      Utils.showSnackBar(e.message);
-    }
-
-    navigatorKey.currentState!.popUntil((route) => route.isFirst);
+    Navigator.of(context).pop();
+  } on FirebaseAuthException catch (e) {
+    print(e);
+    Utils.showSnackBar(e.message);
+    Navigator.of(context).pop();
   }
+}
+
 }
