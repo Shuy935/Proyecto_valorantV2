@@ -18,7 +18,7 @@ class Equipamento extends StatelessWidget {
         foregroundColor: Colors.black,
         title: OutlinedText(
           text: Text(
-            'Equipamento',
+            'Equipamiento',
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -92,14 +92,14 @@ class Equipamento extends StatelessWidget {
               ),),
         IconButton(
                 icon: Icon(
-                  (favoritosData['equipamento'] ?? []).contains(equipo.uuid)
+                  (favoritosData['equipamiento'] ?? []).contains(equipo.uuid)
                       ? Icons.star
                       : Icons.star_border,
                   color: Colors.yellow,
                 ),
                 onPressed: () {
                   print("Botón presionado");
-                  toggleFavorite('equipamento', equipo.displayIcon);
+                  toggleFavorite('equipamiento', equipo.displayIcon);
                 },
               ),
       ],

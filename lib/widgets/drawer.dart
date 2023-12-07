@@ -100,7 +100,7 @@ class DrawerA extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'Equipamento',
+            'Equipamiento',
             style: TextStyle(
               fontSize: 24.0,
               color: Color.fromARGB(255, 178, 6, 6),

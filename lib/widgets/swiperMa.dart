@@ -15,7 +15,7 @@ class SwipperMap extends StatelessWidget {
       final size = MediaQuery.of(context).size;
       return SizedBox(
         width: double.infinity,
-        height: size.height * 0.8,
+        height: size.height,
         child: Swiper(
           itemCount: mapa?.length ?? 0,
           layout: SwiperLayout.STACK,

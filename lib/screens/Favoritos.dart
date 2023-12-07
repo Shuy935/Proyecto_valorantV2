@@ -63,10 +63,10 @@ class Favoritos extends StatelessWidget {
       ));
     }
 
-    if (favoritosData.containsKey('equipamento')) {
+    if (favoritosData.containsKey('equipamiento')) {
       sections.add(_buildSection(
-        'Equipamentos favoritos',
-        favoritosData['equipamento'].cast<String>(),
+        'Equipamientos favoritos',
+        favoritosData['equipamiento'].cast<String>(),
       ));
     }
 

@@ -16,7 +16,7 @@ class LoginWidget extends StatefulWidget {
   _LoginWidgetState createState() => _LoginWidgetState();
 }
 
-class _LoginWidgetState extends State <LoginWidget> {
+class _LoginWidgetState extends State<LoginWidget> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -29,99 +29,100 @@ class _LoginWidgetState extends State <LoginWidget> {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: EdgeInsets.all(16),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(height: 15),
-        Image.asset('assets/loading.gif'),
-        Text(
-          'Iniciar sesión',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 40),
-        TextField(
-          controller: emailController,
-          cursorColor: Colors.white,
-          textInputAction: TextInputAction.next,
-          decoration: InputDecoration(labelText: 'Email'),
-        ),
-        SizedBox(height: 4),
-        TextField(
-          controller: passwordController,
-          textInputAction: TextInputAction.done,
-          decoration: InputDecoration(labelText: 'Contraseña'),
-          obscureText: true,
-        ),
-        SizedBox(height: 20),
-        Container(child: ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              minimumSize: Size.fromHeight(50),
-            ),
-            icon: Icon(Icons.lock_open, size: 32),
-            label: Text(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 15),
+            Image.asset('assets/logo.png'),
+            Text(
               'Iniciar sesión',
-              style: TextStyle(fontSize: 24),
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            onPressed: signIn,
-          ),
-        ),
-        SizedBox(height: 24),
-          GestureDetector(
-            child: Text(
-              '¿Olvido su contraseña?',
-              style: TextStyle(
-                decoration: TextDecoration.underline,
-                color: Colors.blue,
-                fontSize: 15,
+            SizedBox(height: 40),
+            TextField(
+              controller: emailController,
+              cursorColor: Colors.white,
+              textInputAction: TextInputAction.next,
+              decoration: InputDecoration(labelText: 'Email'),
+            ),
+            SizedBox(height: 4),
+            TextField(
+              controller: passwordController,
+              textInputAction: TextInputAction.done,
+              decoration: InputDecoration(labelText: 'Contraseña'),
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
+            Container(
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  minimumSize: Size.fromHeight(50),
+                ),
+                icon: Icon(Icons.lock_open, size: 32),
+                label: Text(
+                  'Iniciar sesión',
+                  style: TextStyle(fontSize: 24),
+                ),
+                onPressed: signIn,
               ),
             ),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ForgotPasswordPage(),
-            )),
-          ),
-        SizedBox(height: 16),
-        RichText(
-          text: TextSpan(
-            style: TextStyle(color: Colors.white, fontSize: 15),
-            text: '¿Aun no tiene cuenta? ',
-            children: [
-              TextSpan(
+            SizedBox(height: 24),
+            GestureDetector(
+              child: Text(
+                '¿Olvido su contraseña?',
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  color: Colors.blue,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => ForgotPasswordPage(),
+              )),
+            ),
+            SizedBox(height: 16),
+            RichText(
+              text: TextSpan(
+                style: TextStyle(color: Colors.white, fontSize: 15),
+                text: '¿Aun no tiene cuenta? ',
+                children: [],
+              ),
+            ),
+            RichText(
+              text: TextSpan(
                 recognizer: TapGestureRecognizer()
-                ..onTap = widget.onClickedSignUp,
+                  ..onTap = widget.onClickedSignUp,
                 text: 'Registrar',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                   color: Colors.blue,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      );
 
   Future signIn() async {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) => Center(child: CircularProgressIndicator()),
-  );
-
-  try {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Center(child: CircularProgressIndicator()),
     );
-    Navigator.of(context).pop();
-  } on FirebaseAuthException catch (e) {
-    print(e);
-    Utils.showSnackBar(e.message);
-    Navigator.of(context).pop();
-  }
-}
 
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      Navigator.of(context).pop();
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      Utils.showSnackBar(e.message);
+      Navigator.of(context).pop();
+    }
+  }
 }
