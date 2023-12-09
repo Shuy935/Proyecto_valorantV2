@@ -38,7 +38,7 @@ class SwiperE extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 270,
+                    top: 250,
                     child: OutlinedText(
                       text: Text(
                         equip.displayName,

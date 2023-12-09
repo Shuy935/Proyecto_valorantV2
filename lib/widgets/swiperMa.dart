@@ -30,7 +30,6 @@ class SwipperMap extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: FadeInImage(
@@ -39,7 +38,7 @@ class SwipperMap extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 270,
+                    top: 250,
                     child: OutlinedText(
                       text: Text(
                         map.displayName,

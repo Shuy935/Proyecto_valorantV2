@@ -38,7 +38,7 @@ class SwipperA extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 270,
+                    top: 250,
                     child: OutlinedText(
                       text: Text(
                         agente.displayName,

@@ -38,7 +38,7 @@ class SwipperArm extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 270,
+                    top: 250,
                     child: OutlinedText(
                       text: Text(
                         arma.displayName,
